@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8"/>
+		<title>JavaScript File Encryption App</title>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+		<link href="http://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet" />
+		<link href="assets/css/style.css" rel="stylesheet" />
+
+	</head>
+
+	<body>
+
+		<a class="back" id="back_button"></a>
+
+		<div id="stage">
+
+			<!-- sign in -->
+			<div id="step1">
+				<div class="content">
+					<h1>Share secret pictures with friends.</h1>
+						<a class="info">User Name</a><br>
+						<input type="username" id = "log_uname"/>
+						<br>
+						<a class="info">Password </a><br>
+						<input type="password" id = "log_pass"/><br>
+					<a class="error" id="signin_error"> </a><br>
+					<a class="button encrypt green">Sign in</a>
+					<a class="button decrypt magenta">Register</a>
+				</div>
+			</div>
+
+			<!-- Get s3 key -->
+			<div id="step2">
+
+				<div class="content if-encrypt">
+					<h1>Read your S3 key.</h1>
+					<h2 id="wrong_key">Read and use locally. No key info is sent to our server.</h2>
+					
+					<a class="button browse blue">Browse</a>
+
+					<input type="file" id="encrypt-input" />
+				</div>
+
+				<div class="content if-decrypt">
+					<h1>Choose which file to decrypt</h1>
+					<h2>Only files encrypted by this tool are accepted.</h2>
+					<a class="button browse blue">Browse</a>
+
+					<input type="file" id="decrypt-input" />
+				</div>
+
+			</div>
+
+			<!-- Main page -->
+			<div id="step3">
+
+				<div class="content if-encrypt">
+					<h1>Always keep secret.</h1>
+					<h2>You can upload a new secret picture and share with your friends. You can also see pictures upload by your friends.</h2>
+					<h2>By the way don't forget add some friends! </h2>
+
+					<a class="button process green" id="upload_pic">Upload</a>
+					<a class="button process blue" id="add_a_friend">Add a friend</a>
+					<a class="button process magenta" id="browse_friend">Browse</a>
+					<a class="button process red" id="delete">Remove a secret</a>
+				</div>
+
+				<div class="content if-decrypt">
+					<h1>Enter the pass phrase</h1>
+					<h2>Enter the pass phrase that was used to encrypt this file. It is not possible to decrypt it without it.</h2>
+
+					<input type="password" />
+					<a class="button process red">Decrypt!</a>
+				</div>
+
+			</div>
+
+			<!-- Remove -->
+			<div id="step4">
+
+				<div class="content">
+					<h1>Remove a secret ...</h1>
+					<a class="button download green">Download</a>
+				</div>
+
+			</div>
+
+			<!-- Register -->
+			<div id="step5">
+
+				<div class="content">
+					<h1>Before sharing secrets ...</h1>
+					<a class="info">User Name</a><br>
+					<input type="username" id="uname"/>
+					<br>
+					<a class="info">Password </a><br>
+					<input type="password" id="pass"/>
+					<br>
+					<a class="info">Comfirm Password </a><br>
+					<input type="password" id="pass2"/><br>
+					<a class="error" id="reg"> </a><br>
+					<a class="button decrypt magenta" id="register_user">Register</a>
+				</div>
+
+			</div>
+
+			<!-- upload -->
+			<div id="step6">
+
+				<div class="content">
+					<h1>Upload a new picture.</h1>
+					<a class="button browse blue" id="browes_pic_upload">Browse</a>
+					<input type="file" id="upload_pic_location" />
+					<br>
+					<a class="info">Shares</a><br>
+					<input type="ss_info" id="shares" value=5 />
+					<br>
+					<a class="info">Threshold</a><br>
+					<input type="ss_info" id="threshold" value=3 /><br>
+					<a class="button download red" id="upload_jsp">Upload</a>
+					<a class="info" id = "upload_result"></a><br>
+				</div>
+
+			</div>
+
+			<!-- Add a friend -->
+			<div id="step7">
+
+				<div class="content">
+					<h1>Share with a new friend!</h1>
+					<a class="info">Friend's user ID</a><br>
+					<input type="username" id="username_add_friend"/><br>
+					<a class="button download green" id="add_friend_button">Add</a>
+					<a class="info" id = "add_friend_result"></a><br>
+				</div>
+
+			</div>
+
+			<!-- choose a friend and browse pics -->
+			<div id="step8">
+
+				<div class="content" id="friend_list">
+					<h1>Choose a friend</h1>
+					<div id="friends_button">
+					</div>
+					<!-- <a class="button download green">def</a> -->
+				</div>
+
+			</div>
+
+			<!-- Browse pictures of a friend -->
+			<div id="step9">
+
+				<div class="content">
+					<h1>Shh....</h1>
+					<div id = "pics">
+							<!-- <img id="test" src="" alt="nothing here" /> -->
+					</div>
+					<!-- <a class="button download green">Download</a> -->
+				</div>
+
+			</div>
+
+			<div id="hidden">
+
+				<div class="content" id="hidden_div">
+					
+				</div>
+
+			</div>
+		</div>
+
+
+
+	</body>
+
+	<!-- Include the AES algorithm of the crypto library -->
+	<script src="assets/js/aes.js"></script>
+	<script src="assets/js/secrets.min.js"></script>
+    
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="https://sdk.amazonaws.com/js/aws-sdk-2.224.1.min.js"></script>
+	<script src="assets/js/sha1.js"></script>
+	<script src="assets/js/en-decrypt.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="assets/js/script.js"></script>
+	
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0" />
+    <title>AWS SDK for JavaScript - Sample Application</title>
+    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.224.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="assets/js/aes.js"></script>
+    <script src="assets/js/secrets.min.js"></script>
+    <script src="assets/js/en-decrypt.js"></script>
+</head>
+<body>
+    file<input type="file" id="file-chooser" />
+    <br>
+    csv<input type="file" id="csv-chooser" />
+    <br>
+    <button id="upload-button">Upload to S3</button>
+    <br>
+    <input type="text" id="friend_id" />
+    <button id="add_friend">Add Friend</button>
+    <br>
+    <button id="download">download</button>
+    <br>
+    <button id="encrypt">encrypt and upload</button>
+
+    <button id="decrypt">decrypt and show image</button>
+    <br>
+    <button id="test">test</button>
+    <div id="results"></div>
+
+    <section data-ng-controller="myCtrl">
+        <img ng-src="{{s3Url}}{{image.Key}}" ng-repeat="image in allImageData">
+    </section>
+    <img id="myimage" src="" alt="nothing here" />
+    <a id='abc'>download<a>
+
+    
+</body>
+</html>
